@@ -53,7 +53,7 @@
 
 @media screen and (max-height: 600px) {
   .windowshop-page .current-article .item-image {
-    max-height:60%;
+    max-height:300px;
     overflow:hidden;
   }
 }
