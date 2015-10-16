@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
 });
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/goa');
+mongoose.connect('mongodb://admin:goa@ds039684.mongolab.com:39684/goa');
 mongoose.connection.once('open', function() {
 
   // Load the models.
