@@ -119,7 +119,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   //url: 'http://localhost:3000'
 
   // Public Heroku server
-  url: '/'
+  url: 'https://tranquil-falls-5429.herokuapp.com'
 })
 
 .constant('MATCH_NUM', 3);
