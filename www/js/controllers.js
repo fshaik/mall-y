@@ -2,7 +2,6 @@ angular.module('starter.controllers', [])
 
 .controller('MallMapCtrl', function($scope){
 
-  google.maps.event.addDomListener(window, "load", function() {
     var myLatlng = new google.maps.LatLng(37.000, -120.000);
 
     var mapOptions = {
@@ -14,8 +13,6 @@ angular.module('starter.controllers', [])
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     $scope.map = map;
-
-  });
 
 })
 
