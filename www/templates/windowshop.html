@@ -1,0 +1,35 @@
+<ion-view view-title="WindowShop" class="windowshop-page">
+  <ion-content scroll="false">
+
+
+    <div class="list card current-article" 
+          ng-class="{skipped: currentArticle.rated ==false,
+                    favorited: currentArticle.rated ==true}"
+          ng-show= "currentArticle && !currentArticle.hide">
+
+      <div class="item item-image">
+        <img ng-src="{{currentArticle.imgurl}}">
+      </div>
+
+      <div class="item">
+        <h2>{{ currentArticle.title }} </h2>
+       
+        <p>{{ currentArticle.brand }}</p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" ng-click="sendFeedback(false)">
+          <i class="icon ion-close"></i>
+          Skip
+        </a>
+        <a class="tab-item" ng-click="sendFeedback(true)">
+          <i class="icon ion-heart"></i>
+          Favorite
+        </a>
+      </div>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>
