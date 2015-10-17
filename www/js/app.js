@@ -122,4 +122,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   url: 'https://tranquil-falls-5429.herokuapp.com'
 })
 
-.constant('MATCH_NUM', 3);
+.constant('MATCH_NUM', 3)
+.constant('GMAP', {
+
+  placeurl:'https://maps.googleapis.com/maps/api/place/details/json',
+  key:'AIzaSyD9HnlrhV-p27OCq3ivBjg_N4_nSTf6UWc'
+});

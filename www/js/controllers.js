@@ -1,8 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('MallMapCtrl', function($scope){
+.controller('MallMapCtrl', function($scope, MallMap){
 
-    var myLatlng = new google.maps.LatLng(37.000, -120.000);
+  MallMap.getLatLng('ChIJ6zMe3oWAhYARDbx_ONr6TWY');
+
+    var myLatlng = new google.maps.LatLng(37.7840297, -122.4074165);
 
     var mapOptions = {
       center: myLatlng,
