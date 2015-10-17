@@ -6,6 +6,7 @@ angular.module('starter.services', [])
     username: false,
     session_id: false,
     favorites:[],
+    favBrands:[],
     newFavorites: 0,
     gender: false
   }
@@ -14,8 +15,6 @@ angular.module('starter.services', [])
 
     var brand = article.brand;
     var likes = 0;
-
-    console.log(brand);
 
     if(o.favorites[brand])
       likes = o.favorites[brand]
@@ -74,19 +73,56 @@ angular.module('starter.services', [])
 
 .factory('MallMap', function($http, GMAP){
 
-  var o ={};
+  var o ={
+    map: false,
+    store: false
+  };
 
-  o.getLatLng = function(pid){
-    var res = $http({
-      method: 'GET',
-      url: GMAP.placeurl,
-      params: {
-        key: GMAP.key,
-        placeid: pid
+  o.getLatLng = function(brand) {
+
+
+    var service;
+    var infowindow;
+
+    var pyrmont = new google.maps.LatLng(37.7840297, -122.4074165);
+    o.store = brand;
+
+    o.map = new google.maps.Map(document.getElementById('map'), {
+        center: pyrmont,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+    var request = {
+      location: pyrmont,
+      radius: '5',
+      name: brand
+      
+    };
+
+    service = new google.maps.places.PlacesService(o.map);
+    service.nearbySearch(request, callback);
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          var place = results[i];
+          createMarker(place);
+          console.log(place);
+         
+        }
       }
-    }).success(function(data){
-      console.log(data);
-    });
+    };
+
+    function createMarker(place) {
+
+      var marker = new google.maps.Marker({
+        position: place.geometry.location,
+        label: o.store,
+        map: o.map
+      });
+
+    }
 
   }
 

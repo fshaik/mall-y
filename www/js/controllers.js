@@ -1,20 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('MallMapCtrl', function($scope, MallMap){
+.controller('MallMapCtrl', function($scope, MallMap, User){
+  
+  console.log(User.favBrands);
+  MallMap.getLatLng(User.favBrands[0]);
+  $scope.map = MallMap.map;
 
-  MallMap.getLatLng('ChIJ6zMe3oWAhYARDbx_ONr6TWY');
+  $scope.$on('$ionicView.enter', function(){
+    MallMap.getLatLng(User.favBrands[0]);
+  })
 
-    var myLatlng = new google.maps.LatLng(37.7840297, -122.4074165);
-
-    var mapOptions = {
-      center: myLatlng,
-      zoom: 16,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-    $scope.map = map;
 
 })
 
@@ -59,8 +54,10 @@ angular.module('starter.controllers', [])
 
       User.addtoFavorites($scope.currentArticle);
 
-      if(!(User.favorites[$scope.currentArticle.brand] % MATCH_NUM) )
+      if(!(User.favorites[$scope.currentArticle.brand] % MATCH_NUM) ) {
+        User.favBrands.unshift($scope.currentArticle.brand);
         $scope.showMatch($scope.currentArticle.brand, User.favorites[$scope.currentArticle.brand]);
+      }
 
     }
 
@@ -76,11 +73,11 @@ angular.module('starter.controllers', [])
 
     }, 50);
 
-  }
+  };
 
   $scope.showMatch = function(brand, likes) {
     var confirmPopup = $ionicPopup.confirm({
-      title: 'You Like Zara!',
+      title: 'You Like ' + brand +'!',
       template: "You've Liked " + likes + " Items by " + brand + "<p><p>Shop There Now?"
     });
 

@@ -125,6 +125,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .constant('MATCH_NUM', 3)
 .constant('GMAP', {
 
-  placeurl:'https://maps.googleapis.com/maps/api/place/details/json',
+  placeurl:'https://maps.googleapis.com/maps/api/place/textsearch/json',
   key:'AIzaSyD9HnlrhV-p27OCq3ivBjg_N4_nSTf6UWc'
 });
