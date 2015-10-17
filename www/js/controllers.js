@@ -36,13 +36,12 @@ angular.module('starter.controllers', [])
   Recommendations.init()
     .then(function(){
       $scope.currentArticle = Recommendations.queue[0];
-      //Recommendations.playCurrentSong();
+       
+
     }).then(function (){
       //hideLoading();
       //$scope.currentSong.loaded = true;
     });
-
-  //$scope.currentArticle = $scope.articles[0];
 
 
   $scope.sendFeedback = function(like) {

@@ -43,9 +43,7 @@ angular.module('starter.services', [])
 
       return o.getNextArticles();
     }
-    else {
-      return o.getNextSongs();
-    }
+
   }
 
   o.getNextArticles = function(){
@@ -54,14 +52,17 @@ angular.module('starter.services', [])
       url: SERVER.url + '/article'
     }).success(function(data){
       o.queue = o.queue.concat(data);
+      o.nextArticle();
     });
   };
 
   o.nextArticle = function() {
     o.queue.shift();
 
+    console.log(o.queue);
+
     if(o.queue.length <= 3) {
-      o.getNextSongs();
+      o.getNextArticles();
     }
   };
 
@@ -89,7 +90,7 @@ angular.module('starter.services', [])
 
     o.map = new google.maps.Map(document.getElementById('map'), {
         center: pyrmont,
-        zoom: 15,
+        zoom: 17,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
@@ -105,12 +106,10 @@ angular.module('starter.services', [])
 
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          var place = results[i];
+          var place = results[0];
           createMarker(place);
           console.log(place);
          
-        }
       }
     };
 
@@ -121,6 +120,8 @@ angular.module('starter.services', [])
         label: o.store,
         map: o.map
       });
+
+      o.map.panTo(place.geometry.location);
 
     }
 
