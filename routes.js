@@ -1,3 +1,4 @@
 module.exports = {
-  '/article': require('./controllers/ArticleController')
+  '/article': require('./controllers/ArticleController'),
+  '/helloo' : require('./controllers/HelloController')
 };
