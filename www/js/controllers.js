@@ -29,17 +29,28 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('WindowShopCtrl', function($scope, $timeout, Recommendations, User,$ionicPopup, MATCH_NUM, $state ){
+.controller('WindowShopCtrl', function($scope, $timeout, Recommendations, User,$ionicPopup, MATCH_NUM, $state, $ionicLoading ){
 
+  var showLoading = function() {
+    $ionicLoading.show({
+      template: '<i class= "ion-loading-c"><i>',
+      noBackdrop:true
+    });
+  };
 
+  var hideLoading = function() {
+      $ionicLoading.hide();
+  };
+
+  showLoading();
 
   Recommendations.init()
     .then(function(){
       $scope.currentArticle = Recommendations.queue[0];
-       
+      
 
     }).then(function (){
-      //hideLoading();
+      hideLoading();
       //$scope.currentSong.loaded = true;
     });
 
