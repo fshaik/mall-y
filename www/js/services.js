@@ -62,7 +62,7 @@ angular.module('starter.services', [])
   o.nextArticle = function() {
     o.queue.shift();
 
-    console.log(o.queue);
+    //console.log(o.queue);
 
     if(o.queue.length <= 3) {
       o.page+= 1;

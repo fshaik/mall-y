@@ -78,10 +78,18 @@ angular.module('starter.controllers', [])
 
     
       $scope.currentArticle = Recommendations.queue[0];;
-      $scope.currentArticle.hide = false;
-      console.log($scope.currentArticle);
+      //$scope.currentArticle.hide = false;
+      //console.log($scope.currentArticle);
 
     }, 50);
+
+    $scope.nextArticleImg = function() {
+      if(Recommendations.queue.length > 1) {
+        return Recommendations.queue[1].imgurl;
+      }
+
+      return '';
+    }
 
   };
 
