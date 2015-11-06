@@ -91,6 +91,8 @@ angular.module('starter.controllers', [])
       return '';
     }
 
+
+
   };
 
   $scope.showMatch = function(brand, likes) {
@@ -109,6 +111,8 @@ angular.module('starter.controllers', [])
     });
 
  };
+
+
 
 
 });
