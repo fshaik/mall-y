@@ -35,21 +35,24 @@ angular.module('starter.services', [])
 .factory('Recommendations', function($http, SERVER, $q) {
 
   var o = {
-    queue: []
+    queue: [],
+    page: 0,
+    limit:10
   };
 
   o.init = function () {
     if(o.queue.length == 0 ) {
 
-      return o.getNextArticles();
+      return o.getNextArticles(o.limit,o.page);
     }
 
   }
 
-  o.getNextArticles = function(){
+  o.getNextArticles = function(limitnum, skipnum){
     return $http({
       method: 'GET',
-      url: SERVER.url + '/article'
+      url: SERVER.url + '/article',
+      params:{sort:'rand', limit: limitnum, skip: skipnum}
     }).success(function(data){
       o.queue = o.queue.concat(data);
       o.nextArticle();
@@ -62,7 +65,8 @@ angular.module('starter.services', [])
     console.log(o.queue);
 
     if(o.queue.length <= 3) {
-      o.getNextArticles();
+      o.page+= 1;
+      o.getNextArticles(o.limit,o.page * o.limit);
     }
   };
 

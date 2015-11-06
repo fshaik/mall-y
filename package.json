@@ -22,6 +22,7 @@
     "lodash": "^3.10.1",
     "method-override": "^2.3.5",
     "mongoose": "^4.1.10",
+    "mongoose-simple-random": "^0.3.3",
     "node-restful": "^0.2.2",
     "resourcejs": "^0.1.25"
   }
