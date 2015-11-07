@@ -46,15 +46,21 @@
 }
 
 .windowshop-page .current-article .item-image {
-  max-height:450px;
+  max-height:75%%;
   overflow:hidden;
 }
 
 @media screen and (max-height: 600px) {
   .windowshop-page .current-article .item-image {
-    max-height:225px;
+    max-height:75%;
     overflow:hidden;
   }
+}
+
+.item-name {
+  max-height: 10%;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .windowshop-page .current-article.favorited.ng-hide {

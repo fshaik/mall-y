@@ -1,7 +1,5 @@
 <ion-view view-title="WindowShop" class="windowshop-page">
   <ion-content scroll="false">
-
-
     <div class="list card current-article" 
           ng-class="{skipped: currentArticle.rated ==false,
                     favorited: currentArticle.rated ==true}"
@@ -10,20 +8,21 @@
           on-swipe-right="sendFeedback(true)"
           >
 
-      <div class="item item-image">
+      <div class="item-image item">
         <img ng-src="{{currentArticle.imgurl}}" >
-
       </div>
 
-      <div class="item">
-        <p>{{ currentArticle.title }}</p>
+      
+    </div>
+
+    <ion-footer-bar>
+      <div class="item-name">
+        {{currentArticle.title}}
         <div class="img-lookahead">
          <img ng-src="{{ nextAritcleImg() }}" />
         </div>
-
       </div>
-      
-    </div>
+    </ion-footer-bar>
 
 
   </ion-content>
