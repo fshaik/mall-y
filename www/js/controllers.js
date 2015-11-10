@@ -21,6 +21,7 @@ angular.module('starter.controllers', [])
 
     User.gender = gender;
 
+
     $state.go('tab.windowshop');
 
   }
@@ -36,6 +37,8 @@ angular.module('starter.controllers', [])
       template: '<i class= "ion-loading-c"><i>',
       noBackdrop:true
     });
+
+    User.auth();
   };
 
   var hideLoading = function() {

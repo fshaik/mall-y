@@ -8,7 +8,25 @@ angular.module('starter.services', [])
     favorites:[],
     favBrands:[],
     newFavorites: 0,
-    gender: false
+    gender: false,
+    authData: false
+  }
+
+  o.auth = function() {
+    var ref = new Firebase("https://goaapp.firebaseio.com");
+
+    ref.authAnonymously(function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+        o.authData = authData;
+        var uid = authData.uid;
+        var usersRef = ref.child(uid);
+        var time = new Date();
+        usersRef.set({createdAccount: time.toString(), likes:""});
+      }
+    });
   }
 
   o.addtoFavorites = function(article) {
@@ -23,6 +41,24 @@ angular.module('starter.services', [])
     o.favorites[brand] = likes + 1;
 
     console.log(o.favorites);
+
+    //Add to user data
+    var ref = new Firebase("https://goaapp.firebaseio.com");
+    var uid = o.authData.uid;
+    
+    if(uid) {
+    
+      var userRef = ref.child(uid);
+      var uidRef = userRef.child("likes");
+      console.log(article)
+      uidRef.push().set(article);
+
+    
+    }
+
+
+
+
 
   }
 
@@ -61,6 +97,7 @@ angular.module('starter.services', [])
 
   o.nextArticle = function() {
     o.queue.shift();
+
 
     //console.log(o.queue);
 
