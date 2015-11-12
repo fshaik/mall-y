@@ -105,6 +105,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'MallMapCtrl'
       }
     }
+  })
+  .state('tab.shoppingbag', {
+    url:'/shoppingbag',
+    views: {
+      'tab-shoppingbag' : {
+        templateUrl: 'templates/shoppingbag.html',
+        controller: 'ShoppingBagCtrl'
+        
+      }
+
+    },
+    onEnter: function( User){
+      if(User)
+        User.getUserShoppingBag(User.authData.uid).then(function(){
+          console.log(User.shoppingBagArticles);
+        });
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
@@ -119,7 +136,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   //url: 'http://localhost:3000'
 
   // Public Heroku server
-  url: 'https://tranquil-falls-5429.herokuapp.com'
+  url: 'https://tranquil-falls-5429.herokuapp.com',
+  userUrl: "https://goaapp.firebaseio.com/"
 })
 
 .constant('MATCH_NUM', 3)

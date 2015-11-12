@@ -118,4 +118,13 @@ angular.module('starter.controllers', [])
 
 
 
+})
+
+.controller('ShoppingBagCtrl', function($scope, User) {
+
+  
+$scope.items = User.shoppingBagArticles
+
+  
+
 });

@@ -1,0 +1,17 @@
+<ion-view view-title="ShoppingBag" class="shoppingbag-page">
+  <ion-content>
+
+    <ion-list ng-controller="ShoppingBagCtrl"
+      <ion-item ng-repeat="item in items"
+                class="item-thumbnail-left">
+        <a class="item item-thumbnail-left" href="#">
+          <img ng-src="{{item.imgurl}}">
+          <h2>{{item.brand}}</h2>
+          <p>{{item.title}}</p>
+        </a>
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

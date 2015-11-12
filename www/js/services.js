@@ -9,7 +9,8 @@ angular.module('starter.services', [])
     favBrands:[],
     newFavorites: 0,
     gender: false,
-    authData: false
+    authData: false,
+    shoppingBagArticles: []
   }
 
   o.auth = function() {
@@ -52,13 +53,31 @@ angular.module('starter.services', [])
       var uidRef = userRef.child("likes");
       console.log(article)
       uidRef.push().set(article);
-
     
     }
 
+  }
+
+  o.getUserShoppingBag = function(userid) {
+
+    return $http({
+      method: 'GET',
+      url: SERVER.userUrl + userid +'/likes.json'
+    }).success(function(data){
+
+      //o.shoppingBagArticles = ;
+
+     //console.log(User.shoppingBagArticles);
+
+      Object.keys(data).forEach(function(key){
+        o.shoppingBagArticles.unshift(data[key])
+        //console.log(data[key]);
+      });
+      
+      console.log("The List ", o.shoppingBagArticles);
 
 
-
+    }); 
 
   }
 
