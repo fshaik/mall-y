@@ -84,7 +84,7 @@ angular.module('starter.controllers', [])
       //$scope.currentArticle.hide = false;
       //console.log($scope.currentArticle);
 
-    }, 50);
+    }, 250);
 
     $scope.nextArticleImg = function() {
       if(Recommendations.queue.length > 1) {
