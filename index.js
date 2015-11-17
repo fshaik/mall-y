@@ -4,11 +4,14 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var _ = require('lodash');
 var path = require('path');
+var compress = require('compression');
+
 
 // Create the application.
 var app = express();
 
 // Add Middleware necessary for REST API's
+app.use(compress());  
 app.use(express.static(path.join(__dirname, 'www')));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
