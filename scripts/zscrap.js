@@ -68,3 +68,33 @@ $('img').each(function(){
 	last = t;
 
 })
+
+//TRUE RELIGION
+
+
+$('img').each(function(){
+
+	var c = $(this).attr("class");
+	var u = $(this).attr("src");
+	var t = $(this).attr("title");
+	var r = Math.random();
+
+	if(typeof t != typeof undefined && (typeof u != typeof(undefined)) && (t.length && u.length) && (c.indexOf("firstimage") > -1) ) {
+		console.log(u,t,r);
+
+		$.post("https://tranquil-falls-5429.herokuapp.com/article", {
+		title: t,
+		brand: "TRUE RELIGION",
+		imgurl: u,
+		rand: r
+		})
+		
+
+	}
+
+
+
+})
+
+
+

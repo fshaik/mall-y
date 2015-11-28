@@ -32,30 +32,41 @@ angular.module('starter.controllers', [])
 
 .controller('WindowShopCtrl', function($scope, $timeout, Recommendations, User,$ionicPopup, MATCH_NUM, $state, $ionicLoading ){
 
-  var showLoading = function() {
-    $ionicLoading.show({
-      template: '<i class= "ion-loading-c"><i>',
-      noBackdrop:true
-    });
+    var showLoading = function() {
+      $ionicLoading.show({
+        template: '<i class= "ion-loading-c"><i>',
+        noBackdrop:true
+      });
 
-    User.auth();
-  };
+      User.auth();
+    };
 
-  var hideLoading = function() {
-      $ionicLoading.hide();
-  };
+    var hideLoading = function() {
+        $ionicLoading.hide();
+    };
 
-  showLoading();
 
-  Recommendations.init()
-    .then(function(){
-      $scope.currentArticle = Recommendations.queue[0];
-      
 
-    }).then(function (){
-      hideLoading();
-      //$scope.currentSong.loaded = true;
-    });
+
+
+  var initializeShopingCards = function () {
+
+    Recommendations.init()
+      .then(function(){
+        $scope.currentArticle = Recommendations.queue[0];
+        
+
+      }).then(function (){
+        hideLoading();
+        //$scope.currentSong.loaded = true;
+      });
+
+  }
+
+
+showLoading();
+initializeShopingCards();
+
 
 
   $scope.sendFeedback = function(like) {

@@ -17,12 +17,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
 
-//test
-app.use('/hello', function(req, res, next) {
-  res.send('Hello World!');
-  next();
-});
-
 
 // CORS Support
 app.use(function(req, res, next) {
@@ -34,6 +28,9 @@ app.use(function(req, res, next) {
 
 // Connect to MongoDB
 mongoose.connect('mongodb://admin:goa@ds039684.mongolab.com:39684/goa');
+
+//mongoose.connect('mongodb://localhost');
+
 mongoose.connection.once('open', function() {
 
   // Load the models.
