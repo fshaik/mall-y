@@ -70,7 +70,7 @@ $('img').each(function(){
 })
 
 //TRUE RELIGION
-
+//var first = true;
 
 $('img').each(function(){
 
@@ -79,7 +79,7 @@ $('img').each(function(){
 	var t = $(this).attr("title");
 	var r = Math.random();
 
-	if(typeof t != typeof undefined && (typeof u != typeof(undefined)) && (t.length && u.length) && (c.indexOf("firstimage") > -1) ) {
+	if(typeof t != typeof undefined && (typeof u != typeof(undefined)) && (t.length && u.length) /*&& (c.indexOf("firstimage") > -1) && first*/) {
 		console.log(u,t,r);
 
 		$.post("https://tranquil-falls-5429.herokuapp.com/article", {
@@ -89,7 +89,7 @@ $('img').each(function(){
 		rand: r
 		})
 		
-
+		//first = false;
 	}
 
 

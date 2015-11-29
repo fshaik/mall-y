@@ -15,6 +15,7 @@ angular.module('starter.controllers', [])
 
 .controller('SplashCtrl', function($scope, $state, User){
 
+  $state.go('tab.windowshop');
 
   $scope.startWindowShop = function(gender) {
 
